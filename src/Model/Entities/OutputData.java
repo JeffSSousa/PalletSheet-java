@@ -35,16 +35,17 @@ public class OutputData {
 	}
 	
     
-	public void InvoicingPallets(int entry, int exit,int breaked) {
+	public void InvoicingPallets(int entry, int exit,int breaked) { // validar a quantidade de pallets que serão faturados
+		int invoice;
 		if (entry<exit) {
-			int invoice = exit - entry;
+			invoice = exit - entry;
 			if(breaked != 0) {
-				invoice = invoice - breaked;
+				invoice = invoice + breaked;
 				System.out.println("Tem " + breaked + " Paletes quebrados");
 			}
 			
-			System.out.println("Será faturado " + invoice + "Paletes");
-			invoicedPallet += invoice ;
+			System.out.println("Será faturado " + invoice + " Paletes");
+			invoicedPallet = invoice ;
 		}
 	}
 	
