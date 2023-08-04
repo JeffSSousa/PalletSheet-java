@@ -2,6 +2,7 @@ package Application;
 
 import java.util.Scanner;
 
+import Model.Entities.SecuritySeal;
 import Model.Enums.ResponseEnum;
 
 public class Program {
@@ -41,7 +42,12 @@ public class Program {
 
 		System.out.print("EXIT: ");
 		exit = sc.nextInt();
-		// lacres adiconados no final do processo
+		
+		
+		System.out.print("Quantos lacres serão add: "); // Lacres 
+		int n = sc.nextInt();
+		SecuritySeal ss = new SecuritySeal();
+		ss.CheckingSeals(n);
 
 		sc.close();
 	}
