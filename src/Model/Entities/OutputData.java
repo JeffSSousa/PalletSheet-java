@@ -1,5 +1,9 @@
 package Model.Entities;
 
+import java.util.Scanner;
+
+import Model.Enums.ResponseEnum;
+
 public class OutputData {
 	private int entry;
 	private int exit;
@@ -60,6 +64,22 @@ public class OutputData {
 	
 	public void PalletBreaked (int amount) {
 		breaked += amount;
+	}
+	
+	public void PalletFLow(int entry) {//fazer tratamento de exceção
+		
+		Scanner sc = new Scanner (System.in);
+		System.out.print("TROUXE PALLETES ? (SIM/NÃO) ");
+		String respStr = sc.next();
+		ResponseEnum resp;
+		if (respStr.equalsIgnoreCase("SIM")) { //metodo onde o processo de pergunta do enumerador seja feita na class enum
+			resp = ResponseEnum.SIM;
+			System.out.print("ENTRADA: ");
+			entry = sc.nextInt();
+		} else if (respStr.equalsIgnoreCase("NAO")) {
+			resp = ResponseEnum.NAO;
+			entry = 0;
+		}
 	}
 
 }

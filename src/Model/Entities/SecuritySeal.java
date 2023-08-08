@@ -53,16 +53,15 @@ public class SecuritySeal {
 		Seal04 = seal04;
 	}
 	
-    public void CheckingSeals(int amount) {
+    public void CheckingSeals() {
     	Scanner sc = new Scanner(System.in);
+    	System.out.print("Quantos lacres serão add: "); 
+		int n = sc.nextInt();
     	ArrayList <Integer> seal = new ArrayList<>();
-    	for(int i= 0 ; i<amount;i++) {
+    	for(int i= 0 ; i<n;i++) {
     		System.out.println("Lacre #" + (i+1));
     		seal.add(sc.nextInt());
         	Seal01 = seal.get(i);
-    	}
-    	for(int list: seal) {
-    		System.out.println(list);
     	}
 
     }

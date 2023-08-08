@@ -8,7 +8,6 @@ public class DriverData {
 	private String truckPlate;
 
 	public DriverData(String driver,String carrierCargo, int password, String truckType, String truckPlate) {
-		super();
 		this.driver = driver;
 		this.carrierCargo = carrierCargo;
 		this.password = password;
@@ -54,6 +53,15 @@ public class DriverData {
 
 	public void setTruckPlate(String truckPlate) {
 		this.truckPlate = truckPlate;
+	}
+	
+	public String toString() {
+		return "TRANSPORTADORA: " + carrierCargo 
+				+ "  -   MOTORISTA: " + driver
+				+ "  -   TIPO: " + truckType
+				+ "\nPLACA DO VEICULO: " + truckPlate
+				+ "   -  SENHA: " + password;
+		
 	}
 
 }
