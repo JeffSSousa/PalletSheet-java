@@ -39,7 +39,7 @@ public class OutputData {
 	}
 	
     
-	public void InvoicingPallets(int entry, int exit,int breaked) { // validar a quantidade de pallets que serão faturados
+	public void InvoicingPallets() { // validar a quantidade de pallets que serão faturados
 		int invoice;
 		if (entry<exit) {
 			invoice = exit - entry;
@@ -53,21 +53,9 @@ public class OutputData {
 		}
 	}
 	
+
 	
-	public void PalletOutput (int amount) {
-		exit += amount ;
-	}
-	
-	public void PalletInput (int amount) {
-		entry += amount;
-	}
-	
-	public void PalletBreaked (int amount) {
-		breaked += amount;
-	}
-	
-	public void PalletFLow(int entry) {//fazer tratamento de exceção
-		
+	public void PalletFLow() {//fazer tratamento de exceção
 		Scanner sc = new Scanner (System.in);
 		System.out.print("TROUXE PALLETES ? (SIM/NÃO) ");
 		String respStr = sc.next();
@@ -80,6 +68,13 @@ public class OutputData {
 			resp = ResponseEnum.NAO;
 			entry = 0;
 		}
+		System.out.print("EXIT: ");
+		exit = sc.nextInt();
+	}
+	
+	public String toString() {
+		return "Entrada de palete: " + getEntry() 
+				+ "     Saida de pallet " + getExit();
 	}
 
 }
