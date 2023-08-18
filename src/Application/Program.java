@@ -5,13 +5,14 @@ import java.util.Scanner;
 import Model.Entities.DriverData;
 import Model.Entities.OutputData;
 import Model.Entities.SecuritySeal;
+import Model.FileOutput.FileCsv;
 
 public class Program {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 
 		Scanner sc = new Scanner(System.in);
 
-
+try {
 		System.out.println("-----IMPRESSÃO------");
 		// dados do motorista-----------------------------------------------------------
 		System.out.println("----DADOS----");
@@ -30,8 +31,8 @@ public class Program {
 		// fluxo de pallet--------------------------------------------
 
 		System.out.print("\n---------FLUXO DE PALETES------------\n");
-		OutputData ot = new OutputData();
-		ot.PalletFLow();
+		OutputData out = new OutputData();
+		out.PalletFLow();
 		
 
 		// Lacres ------------------------------------------------------------
@@ -39,14 +40,38 @@ public class Program {
 		SecuritySeal ss = new SecuritySeal();
 		ss.CheckingSeals();
 
-		System.out.println(dd.toString()); // METHOD TO STRING
+		System.out.println(dd.toString()); // print---------------------
 		System.out.println();
+
+		System.out.println(out.toString());
+		out.InvoicingPallets();
 		
-		//-----------------------
-		System.out.println(ot.toString());
-		ot.InvoicingPallets();
+		String concat = password  // CONCATE PARA O CSV
+		+ "," + carrierCargo 
+	    + "," + out.getEntry() 
+		+ "," + out.getExit()
+		+ "," + out.getInvoicedPallet()
+		+ "," + out.getBreaked()
+		+ "," + driver
+		+ "," + truckPlate
+		+ "," + truckType
+		+ "," + ss.getSeal01()
+		+ "," + ss.getSeal02()
+		+ "," + ss.getSeal03()
+		+ "," + ss.getSeal04();
+		
+		// input dados csv
+		FileCsv csv = new FileCsv();// pedir para rodar se o arquiv
+		csv.AppendData(concat);
+		csv.ReadData();
 		
 		sc.close();
+}catch(Exception e) {
+	System.out.println("Error :" + e);
+	
+}
+
 	}
+	
 
 }
